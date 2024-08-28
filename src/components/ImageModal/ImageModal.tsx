@@ -4,6 +4,8 @@ import s from './ImageModal.module.css';
 import { RxCross2 } from 'react-icons/rx';
 import { Image } from '../../../types';
 
+Modal.setAppElement('#root');
+
 interface ImageModalProps {
   image: Image;
   onClose: () => void;
