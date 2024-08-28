@@ -1,19 +1,23 @@
-import React, { useState } from "react";
-import s from "./SearchBar.module.css";
-import toast from "react-hot-toast";
-import { IoSearch } from "react-icons/io5";
+import React, { ChangeEvent, FC, FormEvent, useState } from 'react';
+import s from './SearchBar.module.css';
+import toast from 'react-hot-toast';
+import { IoSearch } from 'react-icons/io5';
 
-const SearchBar = ({ onSubmit }) => {
-  const [input, setInput] = useState("");
+interface SearchBarProps {
+  onSubmit: (query: string) => void;
+}
 
-  const handleChange = (event) => {
+const SearchBar: FC<SearchBarProps> = ({ onSubmit }) => {
+  const [input, setInput] = useState<string>('');
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setInput(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!input.trim()) {
-      toast.error("Please enter a search term");
+      toast.error('Please enter a search term');
       return;
     }
     onSubmit(input);

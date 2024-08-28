@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { FC } from 'react';
 import Modal from 'react-modal';
 import s from './ImageModal.module.css';
 import { RxCross2 } from 'react-icons/rx';
+import { Image } from '../../../types';
 
-const ImageModal = ({ image, onClose }) => {
+interface ImageModalProps {
+  image: Image;
+  onClose: () => void;
+}
+
+const ImageModal: FC<ImageModalProps> = ({ image, onClose }) => {
   return (
     <Modal
       isOpen={!!image}
