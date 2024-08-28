@@ -7,17 +7,7 @@ import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn';
 import ImageModal from '../ImageModal/ImageModal';
 import { Toaster } from 'react-hot-toast';
-
-interface Image {
-  id: string;
-  urls: Urls;
-}
-
-interface Urls {
-  full: string;
-  regular: string;
-  small: string;
-}
+import { Image } from '../../../types';
 
 const App: FC = () => {
   const [images, setImages] = useState<Image[]>([]);
