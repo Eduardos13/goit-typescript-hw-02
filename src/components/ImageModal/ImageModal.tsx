@@ -1,7 +1,7 @@
-import React from "react";
-import Modal from "react-modal";
-import s from "./ImageModal.module.css";
-import { RxCross2 } from "react-icons/rx";
+import React from 'react';
+import Modal from 'react-modal';
+import s from './ImageModal.module.css';
+import { RxCross2 } from 'react-icons/rx';
 
 const ImageModal = ({ image, onClose }) => {
   return (

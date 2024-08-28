@@ -18,5 +18,5 @@
     "forceConsistentCasingInFileNames": true,
     "jsx": "react-jsx"
   },
-  "include": ["declarations.d.ts", "types.ts"]
+  "include": ["./declarations.d.ts"]
 }
