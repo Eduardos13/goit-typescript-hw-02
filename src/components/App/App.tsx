@@ -32,6 +32,9 @@ const App: FC = () => {
           },
         }
       );
+      if (response.data.results.length === 0) {
+        setError('Oops...There are no images found');
+      }
       setImages((prev) => [...prev, ...response.data.results]);
     } catch (error) {
       setError('Error fetching images');
