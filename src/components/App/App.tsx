@@ -9,6 +9,12 @@ import ImageModal from '../ImageModal/ImageModal';
 import { Toaster } from 'react-hot-toast';
 import { Image } from '../../../types';
 
+interface FetchImageResponce {
+  total: number;
+  total_pages: number;
+  results: Image[];
+}
+
 const App: FC = () => {
   const [images, setImages] = useState<Image[]>([]);
   const [query, setQuery] = useState<string>('');
@@ -22,7 +28,7 @@ const App: FC = () => {
     setError(null);
 
     try {
-      const response = await axios.get(
+      const response = await axios.get<FetchImageResponce>(
         `https://api.unsplash.com/search/photos`,
         {
           params: {
@@ -36,7 +42,10 @@ const App: FC = () => {
         setError('Oops...There are no images found');
       }
       setImages((prev) => [...prev, ...response.data.results]);
-    } catch (error) {
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error)) {
+        setError(error.response?.data.message || 'Error fetching images');
+      }
       setError('Error fetching images');
     } finally {
       setIsLoading(false);

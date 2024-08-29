@@ -2,7 +2,8 @@ export interface Image {
   id: string;
   urls: Urls;
   alt_description?: string;
-  likes?: number;
+  likes: number;
+  created_at: string;
 }
 
 interface Urls {
